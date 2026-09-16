@@ -4,121 +4,175 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TICDCE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --color-primary: #1d4ed8;
-    --color-primary-dark: #1e3a8a;
-    --color-bg: #f8fafc;
-    --color-surface: #ffffff;
-    --color-text: #1e293b;
-    --color-muted: #64748b;
-    --color-border: #e2e8f0;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--color-bg);
-    color: var(--color-text);
-    line-height: 1.6;
-  }
-  header {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-    color: #fff;
-    padding: 3rem 1.5rem;
-    text-align: center;
-  }
-  header h1 {
-    font-size: 2.25rem;
-    margin-bottom: 0.5rem;
-  }
-  header p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-  }
-  nav {
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1rem;
-    flex-wrap: wrap;
-  }
-  nav a {
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: 500;
-  }
-  nav a:hover {
-    color: var(--color-primary);
-  }
-  main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2.5rem 1.5rem;
-  }
-  section {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  section h2 {
-    color: var(--color-primary-dark);
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-  }
-  section p {
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.25rem;
-  }
-  .card {
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-    padding: 1.25rem;
-  }
-  .card h3 {
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
-  }
-  .card p {
-    color: var(--color-muted);
-    font-size: 0.95rem;
-  }
-  footer {
-    text-align: center;
-    padding: 2rem 1.5rem;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--color-border);
+    --ink: #17233b;
+    --ink-soft: #4c5a72;
+    --paper: #f6f3ec;
+    --surface: #ffffff;
+    --accent: #b8552a;
+    --accent-2: #2f6f62;
+    --line: #ddd5c4;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
-      --color-bg: #0f172a;
-      --color-surface: #1e293b;
-      --color-text: #e2e8f0;
-      --color-muted: #94a3b8;
-      --color-border: #334155;
+    :root:not([data-theme="light"]) {
+      --ink: #ede8dc;
+      --ink-soft: #b3ab9a;
+      --paper: #171510;
+      --surface: #201d17;
+      --accent: #e08a5c;
+      --accent-2: #6fb3a2;
+      --line: #3a352a;
     }
+  }
+  :root[data-theme="dark"] {
+    --ink: #ede8dc;
+    --ink-soft: #b3ab9a;
+    --paper: #171510;
+    --surface: #201d17;
+    --accent: #e08a5c;
+    --accent-2: #6fb3a2;
+    --line: #3a352a;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Public Sans", -apple-system, sans-serif;
+    padding-inline: max(16px, calc((100% - 880px) / 2));
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+  }
+  h1, h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    text-wrap: balance;
+    margin: 0;
+  }
+  header.hero {
+    padding-block: 3rem 2.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  header.hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-top: 0.5rem;
+    color: var(--ink);
+  }
+  header.hero .subtitle {
+    margin-top: 0.9rem;
+    max-width: 60ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+  nav.toc {
+    display: flex;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 5;
+  }
+  nav.toc a {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  nav.toc a:hover, nav.toc a:focus-visible {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  main {
+    padding-block: 2.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  section h2 {
+    font-size: 1.5rem;
+    color: var(--ink);
+  }
+  section .eyebrow { margin-bottom: 0.4rem; display: block; }
+  section p {
+    max-width: 68ch;
+    color: var(--ink-soft);
+    margin: 0.9rem 0 0;
+  }
+  .cards {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .card {
+    background: var(--surface);
+    padding: 1.4rem;
+  }
+  .card h3 {
+    font-family: "Fraunces", serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    margin: 0 0 0.5rem;
+    color: var(--accent);
+  }
+  .card p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    max-width: none;
+  }
+  .contact-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+  .contact-item .eyebrow { margin-bottom: 0.3rem; }
+  .contact-item p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 0.98rem;
+  }
+  footer {
+    border-top: 1px solid var(--line);
+    padding-block: 1.5rem 2.5rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
   }
 </style>
 </head>
 <body>
 
-<header>
+<header class="hero">
+  <span class="eyebrow">Territoire d'Industrie — Centre de Développement Communautaire</span>
   <h1>TICDCE</h1>
-  <p>Territoire d'Industrie — Centre de Développement Communautaire</p>
+  <p class="subtitle">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Le TICDCE
+    accompagne les habitants, les porteurs de projets et les acteurs locaux
+    du territoire dans leur développement, sed do eiusmod tempor incididunt.
+  </p>
 </header>
 
-<nav>
+<nav class="toc">
   <a href="#apropos">À propos</a>
   <a href="#missions">Missions</a>
   <a href="#activites">Activités</a>
@@ -126,70 +180,77 @@
 </nav>
 
 <main>
-
   <section id="apropos">
-    <h2>À propos</h2>
+    <span class="eyebrow">01 — À propos</span>
+    <h2>Le centre</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Le TICDCE est
-      un centre de développement communautaire dédié à l'accompagnement des
-      territoires et de leurs habitants. Sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad
+      minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+      aliquip ex ea commodo consequat. Duis aute irure dolor in
+      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+      pariatur.
     </p>
     <p>
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-      ut aliquip ex ea commodo consequat.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+      officia deserunt mollit anim id est laborum.
     </p>
   </section>
 
   <section id="missions">
-    <h2>Nos missions</h2>
-    <div class="grid">
+    <span class="eyebrow">02 — Missions</span>
+    <h2>Ce que nous faisons</h2>
+    <div class="cards">
       <div class="card">
         <h3>Développement local</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
       </div>
       <div class="card">
         <h3>Accompagnement</h3>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
       </div>
       <div class="card">
         <h3>Formation</h3>
-        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui.</p>
+        <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia.</p>
       </div>
       <div class="card">
         <h3>Insertion</h3>
-        <p>Officia deserunt mollit anim id est laborum sed ut perspiciatis unde.</p>
+        <p>Officia deserunt mollit anim id est laborum sed ut perspiciatis unde omnis.</p>
       </div>
     </div>
   </section>
 
   <section id="activites">
-    <h2>Nos activités</h2>
+    <span class="eyebrow">03 — Activités</span>
+    <h2>Sur le territoire</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </p>
-    <p>
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. At vero
+      eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+      praesentium voluptatum deleniti atque corrupti.
     </p>
   </section>
 
   <section id="contact">
-    <h2>Contact</h2>
-    <p>Adresse : Lorem ipsum, 00000 Ville</p>
-    <p>Téléphone : 00 00 00 00 00</p>
-    <p>Email : contact@ticdce.example</p>
+    <span class="eyebrow">04 — Contact</span>
+    <h2>Nous joindre</h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <span class="eyebrow">Adresse</span>
+        <p>Lorem ipsum, 00000 Ville</p>
+      </div>
+      <div class="contact-item">
+        <span class="eyebrow">Téléphone</span>
+        <p>00 00 00 00 00</p>
+      </div>
+      <div class="contact-item">
+        <span class="eyebrow">Email</span>
+        <p>contact@ticdce.example</p>
+      </div>
+    </div>
   </section>
-
 </main>
 
-<footer>
-  <p>&copy; 2026 TICDCE — Tous droits réservés</p>
-</footer>
+<footer>© 2026 TICDCE — Tous droits réservés</footer>
 
 </body>
 </html>
