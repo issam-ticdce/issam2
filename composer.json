@@ -46,7 +46,8 @@
         ],
         "start": [
             "Composer\\Config::disableProcessTimeout",
-            "@php artisan serve --ansi"
+            "@php -r \"echo PHP_EOL.'  Site : http://localhost:8000   (Ctrl+C pour arreter)'.PHP_EOL.PHP_EOL;\"",
+            "@php -S 127.0.0.1:8000 -t public serve.php"
         ],
         "test": [
             "@php artisan config:clear --ansi",

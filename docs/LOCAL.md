@@ -76,6 +76,6 @@ composer demo
 ## Problèmes fréquents
 
 - **`php` ou `composer` introuvable** : fermez et rouvrez le terminal après l'installation de Herd.
-- **« Address already in use » / port 8000 occupé** : lancez `php artisan serve --port=8001`, puis ouvrez http://localhost:8001 (et remplacez `8000` par `8001` dans la ligne `APP_URL` du fichier `.env`).
+- **Port 8000 déjà utilisé** (« Failed to listen » / « Address already in use ») : lancez `php -S 127.0.0.1:8001 -t public serve.php`, puis ouvrez http://localhost:8001 (et remplacez `8000` par `8001` dans la ligne `APP_URL` du fichier `.env`).
 - **Les images ajoutées ne s'affichent pas** : vérifiez que la ligne `APP_URL` du fichier `.env` correspond exactement à l'adresse ouverte dans le navigateur.
 - **Extension manquante (intl, zip, sqlite…)** lors de `composer install` : avec Herd, elles sont incluses. Sous Linux, installez le paquet `php8.3-…` correspondant.
