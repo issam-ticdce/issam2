@@ -28,29 +28,26 @@ Il n'y a pas de paiement en ligne : les demandes des visiteurs sont enregistrée
 - **MySQL** en production (SQLite possible pour tester)
 - Pas de compilation JavaScript : le style du site public est dans `public/css/site.css`
 
-## Démarrage rapide (poste de développement)
+## Démarrage rapide (sur votre ordinateur)
 
 ```bash
 composer install
-cp .env.example .env
-php artisan key:generate
-touch database/database.sqlite
-php artisan migrate --seed
-php artisan db:seed --class=DemoSeeder   # données fictives de test
-php artisan storage:link
-php artisan serve
+composer setup     # configuration + base de données + secteurs
+composer demo      # startups et comptes fictifs de test
+composer start     # http://localhost:8000
 ```
 
-Ouvrez ensuite http://localhost:8000. Les comptes de démonstration (mot de passe `password`) sont :
+Les comptes de démonstration (mot de passe `password`) sont :
 - `admin@example.com` pour `/admin`
 - `startup@example.com` pour `/espace`
 
-Les emails ne sont pas envoyés en développement : ils sont écrits dans `storage/logs/laravel.log`.
+Le guide détaillé, avec l'installation de PHP sous Windows ou macOS, est dans [docs/LOCAL.md](docs/LOCAL.md).
 
 Pour lancer les tests : `php artisan test`
 
 ## Documentation
 
+- [Faire tourner en local (Windows, macOS, Linux)](docs/LOCAL.md)
 - [Installation sur le serveur Ubuntu 24.04](docs/DEPLOIEMENT.md)
 - [Guide d'utilisation (TICDCE et startups)](docs/GUIDE.md)
 - [Où modifier quoi dans le code](docs/CODE.md)

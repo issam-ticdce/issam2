@@ -34,12 +34,19 @@
     },
     "scripts": {
         "setup": [
-            "composer install",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-            "@php artisan key:generate",
-            "@php artisan migrate --force",
-            "@php artisan db:seed --force",
-            "@php artisan storage:link"
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan key:generate --ansi",
+            "@php artisan migrate --force --ansi",
+            "@php artisan db:seed --force --ansi",
+            "@php artisan storage:link --ansi"
+        ],
+        "demo": [
+            "@php artisan db:seed --class=DemoSeeder --force --ansi"
+        ],
+        "start": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php artisan serve --ansi"
         ],
         "test": [
             "@php artisan config:clear --ansi",
