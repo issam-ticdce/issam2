@@ -63,7 +63,8 @@ if not defined PORT (
     exit /b 1
 )
 
-for /f "delims=" %%I in ('php -r "echo gethostbyname(gethostname());"') do set "IP=%%I"
+rem Adresse IP de ce PC sur le reseau (carte utilisee pour sortir vers Internet)
+for /f "usebackq delims=" %%I in (`php -r "$s=@stream_socket_client('udp://8.8.8.8:53'); $n=$s?stream_socket_get_name($s,false):''; echo $n?explode(':',$n)[0]:gethostbyname(gethostname());"`) do set "IP=%%I"
 set "APP_URL=http://%IP%:%PORT%"
 
 cls
