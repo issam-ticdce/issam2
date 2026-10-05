@@ -1,0 +1,58 @@
+TICDCE MARKETPLACE - VERSION WINDOWS POUR LE RESEAU INTERNE
+============================================================
+
+PREREQUIS (une seule fois)
+--------------------------
+PHP doit etre installe sur ce PC. Le plus simple : Laravel Herd (gratuit)
+https://herd.laravel.com/windows
+Verification : ouvrir une fenetre de commande et taper  php -v
+
+DEMARRER
+--------
+1. Double-cliquez sur  demarrer.bat
+2. Au premier lancement, choisissez :
+   - O : donnees de DEMONSTRATION (startups fictives) pour tester
+         comptes admin@example.com et startup@example.com, mot de passe : password
+   - N : base vide + creation de VOTRE compte administrateur
+3. Le navigateur s'ouvre tout seul. La fenetre noire affiche les adresses :
+   - sur ce poste      : http://localhost:8888   (le port peut varier)
+   - depuis le reseau  : http://ADRESSE-IP-DU-PC:8888
+4. Laissez la fenetre noire OUVERTE tant que le site doit fonctionner.
+   Pour arreter le site : fermez la fenetre.
+
+PAGES
+-----
+   Site public            /fr   /ar   /en
+   Administration TICDCE  /admin
+   Espace startup         /espace
+
+ACCES DEPUIS LES AUTRES POSTES
+------------------------------
+- Au premier lancement, Windows peut demander l'autorisation du pare-feu
+  pour php.exe : cochez "Reseaux prives" puis "Autoriser".
+- Si les autres postes n'arrivent pas a ouvrir le site :
+  clic droit sur  autoriser-reseau.bat  > "Executer en tant qu'administrateur".
+- Si l'adresse IP affichee est fausse : tapez  ipconfig  dans une fenetre de
+  commande et utilisez l'"Adresse IPv4" de la carte reseau (Ethernet ou Wi-Fi).
+- Ce PC doit rester allume, avec la fenetre noire ouverte.
+
+AUTRES FICHIERS
+---------------
+   creer-admin.bat        creer un autre compte administrateur TICDCE
+   sauvegarder.bat        copie la base et les images dans le dossier "sauvegardes"
+   storage\logs\laravel.log   journal des erreurs, et des emails (non envoyes ici)
+
+LIMITES DE CETTE VERSION
+------------------------
+- Prevue pour tester et pour une petite equipe sur le reseau interne.
+- Les emails (invitations, validations, messages) ne partent pas : ils sont
+  ecrits dans storage\logs\laravel.log.
+  Pour inviter une startup : creez son compte dans /admin, puis copiez le lien
+  ".../espace/password-reset/..." depuis laravel.log et envoyez-le-lui.
+- Pour une mise en ligne publique, utilisez le serveur Ubuntu
+  (voir docs\DEPLOIEMENT.md).
+
+REPARTIR DE ZERO
+----------------
+Fermez la fenetre noire, supprimez  database\database.sqlite  et
+storage\installation-terminee.txt , puis relancez demarrer.bat.

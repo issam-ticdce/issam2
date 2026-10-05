@@ -18,7 +18,7 @@
     <meta name="description" content="{{ $description ?? __('site.meta_description') }}">
     <meta property="og:title" content="{{ $title ?? 'TICDCE Marketplace' }}">
     <meta property="og:description" content="{{ $description ?? __('site.meta_description') }}">
-    @isset($ogImage)<meta property="og:image" content="{{ $ogImage }}">@endisset
+    @isset($ogImage)<meta property="og:image" content="{{ url($ogImage) }}">@endisset
     @if ($route && in_array('locale', $route->parameterNames()))
         @foreach (config('ticdce.locales') as $alt)
             <link rel="alternate" hreflang="{{ $alt }}" href="{{ $switchUrl($alt) }}">

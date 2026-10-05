@@ -1,0 +1,31 @@
+APP_NAME="TICDCE Marketplace"
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=false
+APP_URL=http://localhost:8888
+
+TICDCE_ADMIN_EMAIL=contact@ticdce.tn
+TICDCE_CONTACT_EMAIL=contact@ticdce.tn
+TICDCE_CONTACT_PHONE=
+TICDCE_CONTACT_ADDRESS="Tunis, Tunisie"
+TICDCE_WEBSITE=
+
+APP_LOCALE=fr
+APP_FALLBACK_LOCALE=en
+APP_FAKER_LOCALE=fr_FR
+
+LOG_CHANNEL=single
+LOG_LEVEL=debug
+
+DB_CONNECTION=sqlite
+
+SESSION_DRIVER=database
+SESSION_LIFETIME=480
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=sync
+CACHE_STORE=database
+
+# Les emails ne sont pas envoyes : ils sont ecrits dans storage\logs\laravel.log
+MAIL_MAILER=log
+MAIL_FROM_ADDRESS="no-reply@ticdce.tn"
+MAIL_FROM_NAME="${APP_NAME}"
