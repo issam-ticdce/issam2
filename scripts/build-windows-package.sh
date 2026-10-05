@@ -19,6 +19,8 @@ COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --prefer-dist --optimize-au
 # Allege le paquet : historiques git, tests et docs des bibliotheques (inutiles a l'execution)
 find vendor -mindepth 3 -maxdepth 3 -type d \( -name .git -o -name tests -o -name test_files -o -name docs -o -name .github \) -prune -exec rm -rf {} +
 find vendor -name .git -type d -prune -exec rm -rf {} +
+rm -rf vendor/laravel/framework/bin vendor/nunomaduro/termwind/art
+find vendor -type f \( -name 'browser_test_*' -o -name '*.md' -o -name 'CHANGELOG*' -o -name 'phpunit.xml*' -o -name '.editorconfig' \) -delete
 rm -f .env bootstrap/cache/*.php
 
 # Scripts Windows a la racine, avec fins de ligne Windows (CRLF)
