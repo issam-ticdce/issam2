@@ -1,0 +1,33 @@
+TICDCE MARKETPLACE - INSTALLATION SUR UBUNTU 24.04
+===================================================
+
+1. Copier l'archive sur le serveur
+   Depuis Windows, avec WinSCP ou en ligne de commande :
+      scp ticdce-marketplace-ubuntu.tar.gz utilisateur@IP-DU-SERVEUR:~
+
+2. Sur le serveur :
+      tar xzf ticdce-marketplace-ubuntu.tar.gz
+      cd ticdce-marketplace-ubuntu
+      sudo bash ubuntu/installer.sh
+
+   Le script pose 2 ou 3 questions (nom de domaine ou IP, email, HTTPS),
+   installe tout (Nginx, PHP 8.3, MySQL), puis vous fait creer votre
+   compte administrateur.
+
+3. Ouvrir le site : http://NOM-DE-DOMAINE-OU-IP
+      /admin   administration TICDCE
+      /espace  espace des startups
+
+METTRE A JOUR
+   Copiez la nouvelle archive, decompressez-la, et relancez
+      sudo bash ubuntu/installer.sh
+   La base de donnees, les images et la configuration sont conservees.
+
+FICHIERS UTILES SUR LE SERVEUR
+   /var/www/ticdce-marketplace                 l'application
+   /var/www/ticdce-marketplace/.env            la configuration (emails SMTP, etc.)
+   /root/ticdce-marketplace-identifiants.txt   mot de passe MySQL
+   /var/backups/ticdce-marketplace             sauvegardes automatiques (chaque nuit)
+   /var/www/ticdce-marketplace/storage/logs/laravel.log   journal des erreurs
+
+Guide complet : docs/DEPLOIEMENT.md
