@@ -25,7 +25,7 @@ FILESYSTEM_DISK=local
 QUEUE_CONNECTION=sync
 CACHE_STORE=database
 
-# Les emails ne sont pas envoyes : ils sont ecrits dans storage\logs\laravel.log
+# Les emails ne sont pas envoyes : ils sont ecrits dans storage\logs\emails.log
 MAIL_MAILER=log
 MAIL_FROM_ADDRESS="no-reply@ticdce.tn"
 MAIL_FROM_NAME="${APP_NAME}"

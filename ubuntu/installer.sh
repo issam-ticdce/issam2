@@ -156,13 +156,18 @@ ok "Application prete."
 # ---------------------------------------------------------------------
 # 6. Serveur web Nginx
 # ---------------------------------------------------------------------
-if [[ $PREMIERE_INSTALL -eq 1 ]]; then
+NGINX_SITE=/etc/nginx/sites-available/ticdce-marketplace
+if [[ ! -f $NGINX_SITE ]]; then   # jamais ecrase ensuite (certbot y ajoute le HTTPS)
     bleu "Configuration de Nginx…"
-    cat > /etc/nginx/sites-available/ticdce-marketplace <<NGINX
+    HOTE_NGINX="$(grep '^APP_URL=' .env | sed -E 's#^APP_URL=https?://##; s#[:/].*##')"
+    [[ "$HOTE_NGINX" =~ ^[0-9.]+$ ]] && HOTE_NGINX="_"
+    LISTEN6=""
+    [[ -f /proc/net/if_inet6 ]] && LISTEN6="listen [::]:80 default_server;"
+    cat > $NGINX_SITE <<NGINX
 server {
     listen 80 default_server;
-    listen [::]:80 default_server;
-    server_name ${DOMAINE:-_};
+    $LISTEN6
+    server_name $HOTE_NGINX;
     root $APP_DIR/public;
     index index.php;
     client_max_body_size 20M;
@@ -192,7 +197,7 @@ server {
     }
 }
 NGINX
-    ln -sf /etc/nginx/sites-available/ticdce-marketplace /etc/nginx/sites-enabled/ticdce-marketplace
+    ln -sf $NGINX_SITE /etc/nginx/sites-enabled/ticdce-marketplace
     rm -f /etc/nginx/sites-enabled/default
 fi
 nginx -t -q

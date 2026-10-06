@@ -1,6 +1,6 @@
 # Faire tourner la marketplace sur votre ordinateur
 
-Cette version locale sert à **tester** : elle utilise une petite base de données dans un fichier (SQLite), sans MySQL, et les emails ne sont pas envoyés (ils sont écrits dans `storage/logs/laravel.log`).
+Cette version locale sert à **tester** : elle utilise une petite base de données dans un fichier (SQLite), sans MySQL, et les emails ne sont pas envoyés (ils sont écrits dans `storage/logs/emails.log`).
 
 ## 1. Installer PHP et Composer (une seule fois)
 
@@ -62,7 +62,7 @@ Pour relancer plus tard, il suffit de refaire `composer start` depuis le même d
 
 ## Voir les emails
 
-Les emails (invitations, validations, messages des visiteurs) ne partent pas en local. Ils sont écrits à la fin du fichier `storage/logs/laravel.log`. Pour tester une invitation, copiez le lien `http://localhost:8000/espace/password-reset/...` depuis ce fichier dans votre navigateur.
+Les emails (invitations, validations, messages des visiteurs) ne partent pas en local. Ils sont écrits dans le fichier `storage/logs/emails.log`. Pour tester une invitation, copiez le lien `http://localhost:8000/espace/password-reset/...` depuis ce fichier dans votre navigateur.
 
 ## Repartir de zéro
 

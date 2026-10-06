@@ -188,5 +188,5 @@ php artisan up
 
 - **Page blanche ou « Server Error »** : lisez la fin du journal avec `tail -50 storage/logs/laravel.log`.
 - **Les images ne s'affichent pas** : vérifiez `APP_URL` dans `.env`, puis relancez `php artisan storage:link` et `php artisan optimize`.
-- **Les emails ne partent pas** : vérifiez les lignes `MAIL_*` et cherchez « Envoi email » dans `storage/logs/laravel.log`.
+- **Les emails ne partent pas** : vérifiez les lignes `MAIL_*` et cherchez « Envoi email » dans `storage/logs/laravel.log`. Tant que `MAIL_MAILER=log`, les emails sont écrits dans `storage/logs/emails.log` (vous pouvez y copier un lien d’invitation).
 - Après toute modification de `.env`, relancez `php artisan optimize`.

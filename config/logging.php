@@ -123,6 +123,15 @@ return [
             'handler' => NullHandler::class,
         ],
 
+        // Emails non envoyés (MAIL_MAILER=log) : un fichier à part, pour retrouver
+        // facilement un lien d'invitation tant que le SMTP n'est pas configuré.
+        'emails' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/emails.log'),
+            'level' => 'debug',
+            'replace_placeholders' => true,
+        ],
+
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],

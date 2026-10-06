@@ -40,15 +40,16 @@ AUTRES FICHIERS
 ---------------
    creer-admin.bat        creer un autre compte administrateur TICDCE
    sauvegarder.bat        copie la base et les images dans le dossier "sauvegardes"
-   storage\logs\laravel.log   journal des erreurs, et des emails (non envoyes ici)
+   storage\logs\laravel.log   journal des erreurs
+   storage\logs\emails.log    les emails (non envoyes dans cette version)
 
 LIMITES DE CETTE VERSION
 ------------------------
 - Prevue pour tester et pour une petite equipe sur le reseau interne.
 - Les emails (invitations, validations, messages) ne partent pas : ils sont
-  ecrits dans storage\logs\laravel.log.
+  ecrits dans storage\logs\emails.log.
   Pour inviter une startup : creez son compte dans /admin, puis copiez le lien
-  ".../espace/password-reset/..." depuis laravel.log et envoyez-le-lui.
+  ".../espace/password-reset/..." depuis emails.log et envoyez-le-lui.
 - Pour une mise en ligne publique, utilisez le serveur Ubuntu
   (voir docs\DEPLOIEMENT.md).
 

@@ -29,5 +29,16 @@ FICHIERS UTILES SUR LE SERVEUR
    /root/ticdce-marketplace-identifiants.txt   mot de passe MySQL
    /var/backups/ticdce-marketplace             sauvegardes automatiques (chaque nuit)
    /var/www/ticdce-marketplace/storage/logs/laravel.log   journal des erreurs
+   /var/www/ticdce-marketplace/storage/logs/emails.log    emails, tant que le SMTP
+                                                          n'est pas configure
+
+EMAILS
+   Par defaut les emails ne partent pas : ils sont ecrits dans emails.log.
+   Pour inviter une startup avant d'avoir configure le SMTP, creez son compte
+   dans /admin puis copiez le lien ".../espace/password-reset/..." depuis
+   emails.log et envoyez-le-lui.
+   Pour envoyer de vrais emails : remplissez les lignes MAIL_* de .env
+   (serveur SMTP de votre messagerie), puis :
+      sudo php8.3 /var/www/ticdce-marketplace/artisan optimize
 
 Guide complet : docs/DEPLOIEMENT.md
