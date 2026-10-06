@@ -1,5 +1,23 @@
 # Installation sur le serveur (Ubuntu 24.04)
 
+## Méthode recommandée : installateur automatique
+
+Avec l'archive `ticdce-marketplace-ubuntu.tar.gz` (construite par `scripts/build-ubuntu-package.sh`) :
+
+```bash
+tar xzf ticdce-marketplace-ubuntu.tar.gz
+cd ticdce-marketplace-ubuntu
+sudo bash ubuntu/installer.sh
+```
+
+Le script installe Nginx, PHP 8.3 et MySQL, crée la base de données (mot de passe généré et noté dans `/root/ticdce-marketplace-identifiants.txt`), configure le site, active le HTTPS si vous avez un nom de domaine, programme une sauvegarde chaque nuit, puis vous fait créer votre compte administrateur.
+
+Depuis le dépôt Git, le même script fonctionne : `sudo bash ubuntu/installer.sh` depuis le dossier cloné (il télécharge alors les bibliothèques avec Composer).
+
+**Mise à jour** : décompressez la nouvelle archive et relancez le script. La base de données, les images et la configuration sont conservées.
+
+## Méthode manuelle (pour comprendre ou adapter)
+
 Ce guide installe la marketplace sur un serveur Ubuntu 24.04 neuf, avec Nginx, PHP 8.3 et MySQL.
 Remplacez `marketplace.ticdce.tn` par votre vrai nom de domaine.
 

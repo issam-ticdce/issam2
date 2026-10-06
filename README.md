@@ -48,6 +48,6 @@ Pour lancer les tests : `php artisan test`
 ## Documentation
 
 - [Faire tourner en local (Windows, macOS, Linux)](docs/LOCAL.md)
-- [Installation sur le serveur Ubuntu 24.04](docs/DEPLOIEMENT.md)
+- [Installation sur le serveur Ubuntu 24.04](docs/DEPLOIEMENT.md) : installateur automatique `sudo bash ubuntu/installer.sh`
 - [Guide d'utilisation (TICDCE et startups)](docs/GUIDE.md)
 - [Où modifier quoi dans le code](docs/CODE.md)
