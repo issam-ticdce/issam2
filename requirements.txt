@@ -1,0 +1,3 @@
+numpy>=1.24
+# Optionnel : interprétation IA des images clés (option --ia)
+anthropic>=1.0
