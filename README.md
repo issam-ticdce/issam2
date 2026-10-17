@@ -9,6 +9,13 @@ similaire original (`--mode similaire`) sur de nouveaux rushes.
 - Python 3.10+, `numpy` (`pip install -r requirements.txt`)
 - Optionnel : `anthropic` + clé API pour l'interprétation IA des images clés (`--ia`)
 
+## Version fichier unique
+
+`analyse_style_video.py` contient tout le code dans un seul fichier :
+```bash
+python analyse_style_video.py analyser reference.mp4 -o sortie/
+```
+
 ## Utilisation
 ```bash
 # Analyser une référence

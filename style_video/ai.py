@@ -76,6 +76,9 @@ def interpret(profile, stills, mode="identique", effort="high"):
         raise RuntimeError(f"Erreur API ({exc.status_code}) : {exc.message}") from exc
     except anthropic.APIConnectionError as exc:
         raise RuntimeError("Impossible de joindre l'API Anthropic.") from exc
+    except TypeError as exc:
+        # Levée par le SDK quand aucune clé API ni profil n'est configuré
+        raise RuntimeError("Aucune clé API Anthropic trouvée : définir ANTHROPIC_API_KEY.") from exc
 
     if message.stop_reason == "refusal":
         raise RuntimeError("La requête d'interprétation a été refusée par le modèle.")
