@@ -9,3 +9,8 @@
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
+
+# Outils de developpement : exclus des paquets Windows / Ubuntu (git archive)
+/.claude export-ignore
+/.agents export-ignore
+/skills-lock.json export-ignore
